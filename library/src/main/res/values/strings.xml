@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">ZuLocationTrackerLib</string>
+    <string name="default_rationale_access_fine_location">You should accept \"Access fine location\" permission request, since it allows application to get current location from handset GPS.</string>
+    <string name="default_rationale_positive_button">GOT IT</string>
+</resources>

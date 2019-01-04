@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">ZulocationTrackerLib</string>
+
+    <string name="zw_status_unknown">Unknown</string>
+    <string name="zw_status_service_started">Service started</string>
+    <string name="zw_status_incorrect_request_parameters">Incorrect Fuzed Location Provider request parameters</string>
+    <string name="zw_status_hardware_resolution_failed">Unable to obtain required phone features</string>
+    <string name="zw_status_permission_request_failed">Unable to obtain permission from user</string>
+    <string name="zw_status_service_stopped">Service stopped</string>
+    <string name="zw_status_http_request_failed">Last HTTP request failed</string>
+    <string name="zw_status_warning_no_location_long_time">Warning! Last location received long time ago</string>
+</resources>
