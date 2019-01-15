@@ -50,7 +50,7 @@ public class ZWSocket {
     public static final void disconnectFromServer() {
         try {
             _needPing = false;
-            sendHeartbeatUpdate(0);
+//            sendHeartbeatUpdate(0);
             new Thread(new Runnable() {
                 @Override
                 public void run() {
@@ -190,7 +190,7 @@ public class ZWSocket {
         public void call(Object... args) {
             mSocketAuthenticated = true;
             Log.i(SOCKET_TAG, " onAuthenticated");
-            sendHeartbeatUpdate(1);
+//            sendHeartbeatUpdate(1);
             ping();
         }
     };
