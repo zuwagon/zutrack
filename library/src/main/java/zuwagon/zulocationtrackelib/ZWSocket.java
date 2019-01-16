@@ -19,12 +19,12 @@ public class ZWSocket {
     private static boolean mSocketAuthenticated;
     private static final String SOCKET_TAG = "Socket-IO";
 
-    private static final String authToken = Zuwagon._apiKey;
-    private static final String serverURL = "http://myserverurl.com";
+    private static final String authToken = "Bearer " + Zuwagon._apiKey;
+    private static final String serverURL = "https://api.zuwagon.com";
 
     private static final int imei = Zuwagon._riderId;
 
-    private static boolean _needPing = true; // This setting from socket control logic.
+    private static boolean _needPing = false; // This setting from socket control logic.
 
     public static final void connectToServer() {
         try {
@@ -92,7 +92,7 @@ public class ZWSocket {
             @Override
             public void run() {
                 try {
-                    Thread.sleep(60*1000); // Interval in milliseconds
+                    Thread.sleep(3*60*1000); // Interval in milliseconds
                     if(_needPing) ZWSocket.sendHeartbeatUpdate(1);
                 } catch (Exception ex) { }
 
@@ -129,6 +129,18 @@ public class ZWSocket {
         @Override
         public void call(final Object... args) {
             mSocketAuthenticated = false;
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        Thread.sleep(2000); // Interval in milliseconds
+                        if(_needPing) connectToServer();
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+                }
+            }).start();
+
 //            runOnUiThread(new Runnable() {
 //                @Override
 //                public void run() {
@@ -175,6 +187,7 @@ public class ZWSocket {
             JSONObject token = new JSONObject();
             try {
                 token.put("token", authToken);
+                token.put("scope", "x-order-tracking");
                 token.put("imei", imei);
             } catch (JSONException e) {
                 e.printStackTrace();
