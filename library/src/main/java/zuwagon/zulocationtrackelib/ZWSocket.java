@@ -22,7 +22,7 @@ public class ZWSocket {
     private static final String authToken = "Bearer " + Zuwagon._apiKey;
     private static final String serverURL = "https://api.zuwagon.com";
 
-    private static final int imei = Zuwagon._riderId;
+    private static final String imei = Zuwagon._riderId;
 
     private static boolean _needPing = false; // This setting from socket control logic.
 

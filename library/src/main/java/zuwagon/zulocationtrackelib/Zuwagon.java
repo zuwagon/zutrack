@@ -37,7 +37,7 @@ public class Zuwagon {
     static String _notificationTitle = null;
     static String _notificationText = null;
     static String _notificationTicker = null;
-    public static int _riderId = 0;
+    public static String _riderId = null;
     public static String _apiKey = null;
 
     static int _rationaleTextRes = R.string.default_rationale_access_fine_location;
@@ -68,7 +68,7 @@ public class Zuwagon {
      * @param rationalePositiveButtonRes String resource of 'OK/GOT IT' button.
      */
     public static final void configure(final Context context,
-                                       int riderId,
+                                       String riderId,
                                        String apiKey,
                                        @DrawableRes int notificationSmallIconRes,
                                        String notificationChannelTitle,
