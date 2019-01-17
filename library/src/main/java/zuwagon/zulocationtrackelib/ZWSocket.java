@@ -15,7 +15,7 @@ import io.socket.client.Socket;
 import io.socket.emitter.Emitter;
 
 public class ZWSocket {
-    public static Socket mSocket;
+    public static Socket mSocket = null;
     private static boolean mSocketAuthenticated;
     private static final String SOCKET_TAG = "Socket-IO";
 
@@ -29,8 +29,10 @@ public class ZWSocket {
     public static final void connectToServer() {
         try {
             _needPing = true;
-            mSocket = IO.socket(serverURL);
-            initSocket();
+            if(mSocket == null || !mSocket.connected()) {
+                mSocket = IO.socket(serverURL);
+                initSocket();
+            }
         } catch (URISyntaxException e) {
             throw new RuntimeException(e);
         }
@@ -134,7 +136,7 @@ public class ZWSocket {
                 public void run() {
                     try {
                         Thread.sleep(2000); // Interval in milliseconds
-                        if(_needPing) connectToServer();
+                        if(_needPing && mSocketAuthenticated) connectToServer();
                     } catch (Exception ex) {
                         ex.printStackTrace();
                     }
