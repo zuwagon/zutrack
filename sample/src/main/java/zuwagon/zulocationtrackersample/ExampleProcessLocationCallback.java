@@ -16,7 +16,7 @@ public class ExampleProcessLocationCallback implements ZWProcessLocationCallback
         uiHandler.post(new Runnable() {
             @Override
             public void run() {
-                Toast.makeText(App.appContext(), "New location: " + newLocation, Toast.LENGTH_SHORT).show();
+//                Toast.makeText(App.appContext(), "New location: " + newLocation, Toast.LENGTH_SHORT).show();
             }
         });
     }
